@@ -12,6 +12,8 @@ def index():
 
 @app.route('/predict',methods=['POST'])
 def predict():
+    with open('logit_pkl', 'rb') as f:
+        logit_model = pickle.load(f, encoding='UTF-8')
     age = int(request.form.get('age'))
     sex = int(request.form.get('sex'))
     cpt = int(request.form.get('cpt'))
