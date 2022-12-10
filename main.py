@@ -8,11 +8,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "hello"
+    return "hello1"
 
 @app.route('/predict',methods=['POST'])
 def predict():
-    return jsonify({'Alert':'be happ'})
+    age = int(request.form.get('age'))
+    sex = int(request.form.get('sex'))
+    ans=age+sex
+    return jsonify({'Alert':str(ans)})
 
 
 if __name__ == '__main__':
