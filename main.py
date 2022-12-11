@@ -29,6 +29,8 @@ def predict():
     t = int(request.form.get('t'))
     lis=[[age,sex,cpt,bp,chol,fbs,ekg,hr,ea,st,sts,flo,t]]
     
+    input_query = np.array(lis)
+    ans = logit_model.predict(input_query)
     ans=age+sex
     return jsonify({'Alert':str(ans)})
 
